@@ -5,5 +5,5 @@ minio:
 compute:
   work-directory: /tmp
   cache: 50000
-  sudo: job
+  user: job
   #cores: 10
