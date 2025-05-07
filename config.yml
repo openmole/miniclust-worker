@@ -1,0 +1,9 @@
+minio:
+  url: https://babar.openmole.org
+  key: key
+  secret: secret
+compute:
+  work-directory: /tmp
+  cache: 50000
+  sudo: job
+  #cores: 10

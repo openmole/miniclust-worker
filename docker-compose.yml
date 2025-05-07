@@ -1,0 +1,43 @@
+
+version: '3.8'
+
+services:
+  miniclust:
+    image: openmole/miniclust:latest
+    container_name: miniclust
+    command: --config "/config/config.yml"
+    volumes:
+      - config-volume:/config
+    restart: always
+    depends_on:
+      - init
+
+  init:
+    image: debian:12-slim
+    entrypoint: /bin/sh -c "
+      cp /run/secrets/miniclust_config /config/config.yml &&
+      chown -R 1001:1001 /config &&
+      echo '[init] Initialization complete'"
+    volumes:
+      - config-volume:/config
+    secrets:
+      - miniclust_config
+    user: "0"
+    restart: "no"  
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup --interval 60 miniclust
+
+secrets:
+  miniclust_config:
+    file: ./config.yml
+
+
+volumes:
+  config-volume:
+
