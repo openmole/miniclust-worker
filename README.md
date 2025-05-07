@@ -7,8 +7,12 @@ git clone https://github.com/openmole/miniclust-worker.git
 ```
 
 Edit the config.yml file, and change the service url, key and secret:
-
-https://github.com/openmole/miniclust-worker/blob/main/config.yml#L2-L4
+```
+minio:
+  url: https://babar.openmole.org
+  key: key
+  secret: secret
+```
 
 Then run:
 ```
