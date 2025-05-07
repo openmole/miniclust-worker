@@ -11,11 +11,14 @@ services:
     restart: always
     depends_on:
       - init
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
 
   init:
     image: debian:12-slim
     entrypoint: /bin/sh -c "
       cp /run/secrets/miniclust_config /config/config.yml &&
+      chmod 600 /config/config.yml &&
       chown -R 1001:1001 /config &&
       echo '[init] Initialization complete'"
     volumes:
@@ -27,11 +30,12 @@ services:
 
   watchtower:
     image: containrrr/watchtower
-    container_name: watchtower
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --cleanup --interval 60 miniclust
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=60
+      - WATCHTOWER_LABEL_ENABLE=true
 
 secrets:
   miniclust_config:
