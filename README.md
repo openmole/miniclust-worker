@@ -1,7 +1,7 @@
 
 # MiniClust Worker
 
-To deploy a worker on a computer, just clone this repo.
+To deploy a [miniclust](https://github.com/openmole/miniclust) worker on a computer, just clone this repo.
 ```
 git clone https://github.com/openmole/miniclust-worker.git
 ```
