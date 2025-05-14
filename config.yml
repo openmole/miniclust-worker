@@ -3,7 +3,7 @@ minio:
   key: key
   secret: secret
 compute:
+  cache: 50000 # local cache size in MB
+  #cores: 10 # default to nproc
+  user: job 
   work-directory: /tmp
-  cache: 50000
-  sudo: job
-  #cores: 10
