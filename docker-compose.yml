@@ -8,7 +8,10 @@ services:
     command: --config "/config/config.yml"
     volumes:
       - config-volume:/config
+    environment:
+      - HOSTNAME=${HOSTNAME}
     restart: always
+    privileged: true
     depends_on:
       - init
     labels:
