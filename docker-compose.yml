@@ -31,6 +31,12 @@ services:
     user: "0"
     restart: "no"  
 
+  watchtoweronstart:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --run-once
+
   watchtower:
     image: containrrr/watchtower
     restart: always
@@ -38,8 +44,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - WATCHTOWER_INCLUDE_RESTARTING=true
-      - WATCHTOWER_INCLUDE_STOPPED=true
-      - WATCHTOWER_REVIVE_STOPPED=true
+      #- WATCHTOWER_INCLUDE_STOPPED=true
+      #- WATCHTOWER_REVIVE_STOPPED=true
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_POLL_INTERVAL=60
       - WATCHTOWER_LABEL_ENABLE=true
