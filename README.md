@@ -16,7 +16,7 @@ minio:
 
 Then run:
 ```
-docker compose up -d
+./start
 ```
 
 Prerequisite:
