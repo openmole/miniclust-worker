@@ -32,7 +32,7 @@ services:
     restart: "no"  
 
   watchtower:
-    image: containrrr/watchtower
+    image: nickfedor/watchtower
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
