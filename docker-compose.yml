@@ -9,6 +9,7 @@ services:
     command: --config "/config/config.yml"
     volumes:
       - config-volume:/config
+      - ./data:/data
     environment:
       - HOSTNAME=${HOSTNAME}
     restart: always
