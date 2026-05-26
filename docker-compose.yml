@@ -10,7 +10,6 @@ services:
     volumes:
       - config-volume:/config
       - ./data:/data
-      - /dev:/dev
     environment:
       - HOSTNAME=${HOSTNAME}
     restart: always
